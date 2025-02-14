@@ -21,32 +21,35 @@ public class MainActivity extends AppCompatActivity {
 
         // Load default fragment
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new BooksFragment())
-                .commit();
+            loadFragment(new BooksFragment());
         }
 
         // Setup bottom navigation
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
-            int itemId = item.getItemId();
-            
-            if (itemId == R.id.nav_books) {
-                selectedFragment = new BooksFragment();
-            } else if (itemId == R.id.nav_rooms) {
-                selectedFragment = new RoomsFragment();
-            } else if (itemId == R.id.nav_profile) {
-                selectedFragment = new ProfileFragment();
+            switch (item.getItemId()) {
+                case R.id.nav_books:
+                    selectedFragment = new BooksFragment();
+                    break;
+                case R.id.nav_rooms:
+                    selectedFragment = new RoomsFragment();
+                    break;
+                case R.id.nav_profile:
+                    selectedFragment = new ProfileFragment();
+                    break;
             }
-
-            if (selectedFragment != null) {
-                getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, selectedFragment)
-                    .commit();
-                return true;
-            }
-            return false;
+            return loadFragment(selectedFragment);
         });
     }
-} 
+
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
+            return true;
+        }
+        return false;
+    }
+}
