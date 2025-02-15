@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Pustakalay"
-include ':app' 
+include(":app")
