@@ -65,4 +65,4 @@ public class RoomsFragment extends Fragment {
             .setNegativeButton("Cancel", null)
             .show();
     }
-} 
+}

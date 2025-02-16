@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import com.pustakalay.databinding.FragmentProfileBinding;
+import com.pustakalay.activities.LoginActivity;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
@@ -49,4 +50,4 @@ public class ProfileFragment extends Fragment {
         startActivity(new Intent(getActivity(), LoginActivity.class));
         requireActivity().finish();
     }
-} 
+}

@@ -53,10 +53,15 @@ public class BooksFragment extends Fragment {
     private void setupSearch() {
         binding.etSearch.addTextChangedListener(new TextWatcher() {
             @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
             public void afterTextChanged(Editable s) {
                 filter(s.toString());
             }
-            // ... other overrides
         });
     }
 
@@ -81,4 +86,4 @@ public class BooksFragment extends Fragment {
             .setNegativeButton("Cancel", null)
             .show();
     }
-} 
+}
